@@ -6,6 +6,10 @@ module.exports = {
             DATA : '/:name',
             DELETE : '/:name/delete',
             UPDATE : '/:name/update'
+        },
+        LEDGER : {
+            ADD : '/add',
+            REMOVE : '/remove',
         }
     }
 }

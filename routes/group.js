@@ -1,12 +1,12 @@
 const express = require('express');
-const userRoutes = express.Router();
-const userCtrl = require('../controllers/group');
+const groupRoutes = express.Router();
+const groupCtrl = require('../controllers/group');
 
 const {CREATE, DATA, DELETE, UPDATE} = require('../utils/constants/app-constants').ROUTES.GROUP;
 
-userRoutes.post(CREATE, userCtrl.create);
-userRoutes.post(DATA, userCtrl.data);
-userRoutes.post(DELETE, userCtrl.deleteGroup);
-userRoutes.post(UPDATE, userCtrl.update);
+groupRoutes.post(CREATE, groupCtrl.create);
+groupRoutes.post(DATA, groupCtrl.data);
+groupRoutes.post(DELETE, groupCtrl.deleteGroup);
+groupRoutes.post(UPDATE, groupCtrl.update);
 
-module.exports = userRoutes;
+module.exports = groupRoutes;

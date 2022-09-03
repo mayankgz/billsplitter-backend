@@ -11,8 +11,7 @@ module.exports = {
         const result = await repo.add(groupObject);
         if(result && result.name){
             response.json({message:'Group successfully created '});
-        }
-        else{
+        }else{
             response.json({message:'Problem in group creation'});
         }
 

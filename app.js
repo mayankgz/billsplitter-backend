@@ -6,6 +6,7 @@ app.use(express.json());
 app.use(express.urlencoded());
 //Dynamic Routing
 app.use('/', require('./routes/group'));
+app.use('/ledger', require('./routes/ledger'));
 
 const server = app.listen(1000, (err) => {
     if(err){

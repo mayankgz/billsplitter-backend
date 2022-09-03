@@ -47,7 +47,7 @@ module.exports = {
             }
         })
     },
-    
+
     changePassword(userObject, response){
         UserModel.findOneAndUpdate({userid:userObject.userid, password:userObject.password},{password:userObject.new_password}, (err, doc)=>{
             if(err){
