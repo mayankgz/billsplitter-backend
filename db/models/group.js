@@ -6,7 +6,8 @@ const Schema = connection.Schema;
 const groupSchema = new Schema({
     'name':{type:SchemaTypes.String, required:true, unique:true},
     'password':{type:SchemaTypes.String, required:true},
-    'members':{type:SchemaTypes.Array}
+    'members':{type:SchemaTypes.Array},
+    'transactions':[{ type:SchemaTypes.ObjectId, ref:'ledger'}]
 })
 
 const GroupModel = connection.model('groups', groupSchema);

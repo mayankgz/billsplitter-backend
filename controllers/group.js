@@ -3,17 +3,18 @@ const repo = require('../db/repository/groupOperations');
 
 module.exports = {
 
-    async create(request, response){
+    create(request, response){
         const groupObject = request.body;
         console.log('group is ', groupObject);
         // response.json({message:'succeed1!'});
         
-        const result = await repo.add(groupObject);
-        if(result && result.name){
-            response.json({message:'Group successfully created '});
-        }else{
-            response.json({message:'Problem in group creation'});
-        }
+        repo.add(groupObject, response);
+        // const result = await repo.add(groupObject);
+        // if(result && result.name){
+        //     response.json({message:'Group successfully created '});
+        // }else{
+        //     response.json({message:'Problem in group creation'});
+        // }
 
     },
 

@@ -8,8 +8,8 @@ module.exports = {
             UPDATE : '/:name/update'
         },
         LEDGER : {
-            ADD : '/add',
-            REMOVE : '/remove',
+            ADD : '/:name/add',
+            REMOVE : '/:name/remove',
         }
     }
 }

@@ -6,8 +6,9 @@ const Schema = connection.Schema;
 const ledgerSchema = new Schema({
     'payer':{type:SchemaTypes.String, required:true},
     'payment':{type:SchemaTypes.Number, required:true},
-    'description':{type:SchemaTypes.String}
-    
+    'description':{type:SchemaTypes.String},
+    'group': {type:SchemaTypes.String, ref:'groups'}
+
 }, {collection:'ledger'} )
 
 const LedgerModel = connection.model('ledger', ledgerSchema);

@@ -2,20 +2,41 @@ const GroupModel = require('../models/group');
 
 module.exports = {
 
-    add(groupObject){
-        var promise = GroupModel.create(groupObject);
-        return promise;
+    add(groupObject, response){
+        // var promise = GroupModel.create(groupObject);
+        // return promise;
+
+        GroupModel.create(groupObject, (err, doc) => {
+            if(err){
+                response.json({message:'Some DB Error  '});
+            }else if(doc){
+                response.json({message:'Group successfully created '});
+            }else{
+                response.json({message:'Error in group creation'});
+            }
+        })
     },
 
     find(groupObject, response){
-        GroupModel.findOne({name:groupObject.name, password:groupObject.password},(err, doc)=>{
+        // GroupModel.findOne({name:groupObject.name, password:groupObject.password},(err, doc)=>{
+        //     if(err){
+        //         response.json({message:'Some DB Error  '});
+        //     }
+        //     else if(doc){
+        //         response.json({message:'DataObject: ', doc});
+        //     }
+        //     else{
+        //         response.json({message:'Invalid Group name or Password'});
+        //     }
+        // })
+
+        GroupModel.findOne({name:groupObject.name, password:groupObject.password}).populate('transactions').exec((err, group) => {
             if(err){
                 response.json({message:'Some DB Error  '});
-            }
-            else if(doc){
-                response.json({message:'Welcome '+groupObject.name});
-            }
-            else{
+            }else if(group){
+                response.json({message:'Group Object: ', group});
+                //console.log(group.transactions);
+            }else{
                 response.json({message:'Invalid Group name or Password'});
             }
         })
@@ -46,18 +67,5 @@ module.exports = {
                 response.json({message:'Invalid Group Name or Password'});
             }
         })
-    },
-
-    changePassword(userObject, response){
-        UserModel.findOneAndUpdate({userid:userObject.userid, password:userObject.password},{password:userObject.new_password}, (err, doc)=>{
-            if(err){
-                response.json({message:'Some DB Error  '});
-            }
-            else if(doc){
-                response.json({message:'Password successfully changed '});
-            }else{
-                response.json({message:'Invalid Userid or Password'});
-            }
-        });
     }
 }
