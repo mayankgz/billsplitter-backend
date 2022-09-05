@@ -42,8 +42,8 @@ module.exports = {
         })
     },
 
-    update(groupObject, response){
-        GroupModel.findOneAndUpdate({name:groupObject.name, password:groupObject.password},{members:groupObject.members}, (err, doc)=>{
+    update(memberObject, name, response){
+        GroupModel.findOneAndUpdate({name:name}, {$push:{members:memberObject.new_member}}, (err, doc)=>{
             if(err){
                 response.json({message:'Some DB Error  '});
             }

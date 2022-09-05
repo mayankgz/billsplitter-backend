@@ -30,13 +30,13 @@ module.exports = {
     },
 
     update(request, response){
-        const groupObject = request.body;
+        const memberObject = request.body;
         const name = request.params['name'];
-        console.log('group is ', groupObject);
+        console.log('new member is ', memberObject);
         console.log('name is ', name);
         // response.json({message:'succeed3!'});
 
-        repo.update(groupObject, response);
+        repo.update(memberObject, name, response);
 
     },
 
