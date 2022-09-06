@@ -7,7 +7,7 @@ module.exports = {
         const name = request.params['name'];
         const ledgerObject = request.body;
         ledgerObject['group'] = name;
-        console.log('name ', name);
+        //console.log('name ', name);
         console.log('ledger object is ', ledgerObject);
 
         repo.add(ledgerObject, name, response);
@@ -25,5 +25,12 @@ module.exports = {
         repo.remove(ledgerObject, name, response);
 
     },
+
+    getTransaction(request, response){
+        const groupName = request.params['name'];
+        console.log('group is ', groupName);
+
+        repo.find(groupName, response);
+    }
 
 }

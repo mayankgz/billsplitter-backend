@@ -41,12 +41,10 @@ module.exports = {
     },
 
     data(request, response){
-        const groupObject = request.body;
-        const name = request.params['name'];
-        console.log('name is ', name);
-        console.log('group object is ', groupObject);
+        const group_name = request.params['name'];
+        console.log('name is ', group_name);
         // response.json({message:'succeed4!'});
 
-        repo.find(groupObject, response);
+        repo.find(group_name, response);
     }
 }

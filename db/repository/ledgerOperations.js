@@ -48,5 +48,19 @@ module.exports = {
                 response.json({message:'Invalid Ledger Data '});
             }
         })
+    },
+
+    find(groupName, response){
+        GroupModel.findOne({name:groupName}).populate('transactions').exec((err, group) => {
+            if(err){
+                response.json({message:'Some DB Error  '});
+            }else if(group){
+                const transactions = group['transactions'];
+                response.json({message:'Group Object: ', transactions});
+                //console.log(group.transactions);
+            }else{
+                response.json({message:'Invalid Group name or Password'});
+            }
+        })
     }
 }

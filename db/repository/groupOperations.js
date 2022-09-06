@@ -17,29 +17,31 @@ module.exports = {
         })
     },
 
-    find(groupObject, response){
-        // GroupModel.findOne({name:groupObject.name, password:groupObject.password},(err, doc)=>{
-        //     if(err){
-        //         response.json({message:'Some DB Error  '});
-        //     }
-        //     else if(doc){
-        //         response.json({message:'DataObject: ', doc});
-        //     }
-        //     else{
-        //         response.json({message:'Invalid Group name or Password'});
-        //     }
-        // })
-
-        GroupModel.findOne({name:groupObject.name, password:groupObject.password}).populate('transactions').exec((err, group) => {
+    find(groupName, response){
+        GroupModel.findOne({name:groupName},(err, doc)=>{
             if(err){
                 response.json({message:'Some DB Error  '});
-            }else if(group){
-                response.json({message:'Group Object: ', group});
-                //console.log(group.transactions);
-            }else{
+            }
+            else if(doc){
+                const members = doc.members;
+                response.json({message:'DataObject: ', members});
+            }
+            else{
                 response.json({message:'Invalid Group name or Password'});
             }
         })
+
+        // GroupModel.findOne({name:groupObject.name}).populate('transactions').exec((err, group) => {
+        //     if(err){
+        //         response.json({message:'Some DB Error  '});
+        //     }else if(group){
+        //         const transactions = group['transactions'];
+        //         response.json({message:'Group Object: ', transactions});
+        //         //console.log(group.transactions);
+        //     }else{
+        //         response.json({message:'Invalid Group name or Password'});
+        //     }
+        // })
     },
 
     update(memberObject, name, response){
