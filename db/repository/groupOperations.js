@@ -69,5 +69,21 @@ module.exports = {
                 response.json({message:'Invalid Group Name or Password'});
             }
         })
+    },
+
+    login(groupObject, response){
+        GroupModel.findOne(({name:groupObject.name, password:groupObject.password},(err, doc)=>{
+            if(err){
+                response.json({message:'Some DB Error  '});
+            }
+            else if(doc){
+                const group_name = groupObject.name;
+                //console.log(group_name);
+                response.json({message:'Logged in ',group_name});
+            }
+            else{
+                response.json({message:'Invalid Group Name or Password'});
+            }
+        }))
     }
 }

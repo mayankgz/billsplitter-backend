@@ -46,5 +46,10 @@ module.exports = {
         // response.json({message:'succeed4!'});
 
         repo.find(group_name, response);
+    },
+
+    login(request, response){
+        const groupObject = request.body;
+        repo.login(groupObject, response);
     }
 }

@@ -5,7 +5,8 @@ module.exports = {
             CREATE : '/create',
             DATA : '/:name/member',
             DELETE : '/:name/delete',
-            UPDATE : '/:name/update'
+            UPDATE : '/:name/update',
+            LOGIN : '/login'
         },
         LEDGER : {
             ADD : '/:name/add',
