@@ -1,4 +1,4 @@
-const GroupModel = require('../models/group');
+const GroupModel = require('../models/group').GroupModel;
 
 module.exports = {
 
@@ -10,7 +10,7 @@ module.exports = {
             if(err){
                 response.json({message:'Some DB Error  '});
             }else if(doc){
-                response.json({message:'Group successfully created '});
+                response.json({message:'SignIn'});
             }else{
                 response.json({message:'Error in group creation'});
             }

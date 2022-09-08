@@ -1,5 +1,5 @@
-const LedgerModel = require('../models/ledger');
-const GroupModel = require('../models/group');
+const LedgerModel = require('../models/ledger').LedgerModel;
+const GroupModel = require('../models/group').GroupModel;
 
 module.exports = {
 

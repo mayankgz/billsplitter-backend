@@ -5,7 +5,8 @@ module.exports = {
 
     create(request, response){
         const groupObject = request.body;
-        console.log('group is ', groupObject);
+        //console.log('group is ', groupObject);
+        logger.debug('group is ', groupObject);
         // response.json({message:'succeed1!'});
         
         repo.add(groupObject, response);
@@ -21,8 +22,11 @@ module.exports = {
     deleteGroup(request, response){
         const groupObject = request.body;
         const name = request.params['name'];
-        console.log('group object is ', groupObject);
-        console.log('name is ', name);
+        //console.log('group object is ', groupObject);
+        logger.debug('group object is ', groupObject);
+        //console.log('name is ', name);
+        logger.debug('name is ', name);
+        
         // response.json({message:'succeed2!'});
 
         repo.remove(groupObject, response);
@@ -31,18 +35,27 @@ module.exports = {
 
     update(request, response){
         const memberObject = request.body;
+        if(memberObject['new_member']){
         const name = request.params['name'];
-        console.log('new member is ', memberObject);
-        console.log('name is ', name);
+        //console.log('new member is ', memberObject);
+        logger.debug('new member is ', memberObject);
+        //console.log('name is ', name);
+        logger.debug('name is ', name);
+
         // response.json({message:'succeed3!'});
 
         repo.update(memberObject, name, response);
+        }else{
+            response.json({message:'blank value'});
+        }
+        
 
     },
 
     data(request, response){
         const group_name = request.params['name'];
-        console.log('name is ', group_name);
+        //console.log('name is ', group_name);
+        logger.debug('name is ', group_name);
         // response.json({message:'succeed4!'});
 
         repo.find(group_name, response);
